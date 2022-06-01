@@ -105,6 +105,7 @@ Components:
 
 ```javascript
  {
+   id: [{ type: Schema.Types.ObjectId, ref:'Question' }]
    name: { type: String },
    language: {type: String}
  }
