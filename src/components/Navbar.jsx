@@ -14,8 +14,11 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-          <Link to={`/userprofile/${user._id}`}>
+          <Link to={`/userprofile/`}>
             <button>User Profile</button>
+          </Link>
+          <Link to={`/createquiz/`}>
+            <button>Create a Quizzz</button>
           </Link>
           <button onClick={logoutUser}>Logout</button>
         </>

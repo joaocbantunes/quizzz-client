@@ -7,6 +7,8 @@ import IsAnon from "./components/IsAnon";
 import UserProfile from "./pages/UserProfile";
 import IsPrivate from "./components/IsPrivate";
 import EditProfilePage from "./pages/EditProfile";
+import CreateQuiz from "./pages/CreateQuiz";
+import ShowQuiz from "./pages/ShowQuiz";
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/userprofile/:userId"
+          path="/userprofile"
           element={
             <IsPrivate>
               <UserProfile />
@@ -29,6 +31,23 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route
+          path="/createquiz/"
+          element={
+            <IsPrivate>
+              <CreateQuiz />
+            </IsPrivate>
+          }
+        />
+                <Route
+          path="/quiz/:id"
+          element={
+            <IsPrivate>
+              <ShowQuiz />
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/signup"
           element={
