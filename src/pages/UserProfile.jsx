@@ -21,7 +21,8 @@ function ProfilePage() {
         }
       );
       setUser(response.data);
-      console.log(response.data);
+      setImage(response.data.profileImage);
+      console.log(response.data.profileImage);
     } catch (error) {
       console.log(error);
     }
@@ -53,9 +54,10 @@ function ProfilePage() {
     <div>
       {user && (
         <div>
-          <h1> Welcome {user.username}</h1>
-          <h1> Your e-mail: {user.email}</h1>
-          <img src={image} alt="" />
+          <h1> Welcome to your profile: {user.username}</h1>
+
+          <img src={image} alt="profileImage" />
+          <br />
           <Link to={`/userprofile/edit/${user._id}`}>
             <button> Edit your profile </button>
           </Link>

@@ -8,6 +8,7 @@ function EditProfilePage() {
   const { userId } = useParams();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ function EditProfilePage() {
       );
       setUsername(response.data.username);
       setEmail(response.data.email);
+      setImage(response.data.profileImage);
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -39,12 +41,26 @@ function EditProfilePage() {
     }
   };
 
+  /*   const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        setImage(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  }; */
+
   useEffect(() => {
     getProfile();
   }, []);
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
+  const uploadHandler = (e) => setImage(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +72,7 @@ function EditProfilePage() {
       .then(() => {
         setUsername("");
         setEmail("");
+        setImage("");
         navigate(`/userprofile/${userId}`);
       })
       .catch((err) => console.log(err));
@@ -74,6 +91,10 @@ function EditProfilePage() {
         />
         <label htmlFor="description">Change Email</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
+        <br />
+        <img src={image} alt="" srcset="" />
+        <input type="file" onChange={uploadHandler} />
+        <br />
         <button type="submit">Edit</button>
       </form>
       <br />
