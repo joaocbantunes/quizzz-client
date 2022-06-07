@@ -10,6 +10,7 @@ import EditProfilePage from "./pages/EditProfile";
 import CreateQuiz from "./pages/CreateQuiz";
 import ShowQuiz from "./pages/ShowQuiz";
 import GlobalStyles from "./GlobalStyles";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <GlobalStyles />
       <Navbar />
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route
           path="/userprofile"
           element={

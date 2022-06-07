@@ -9,9 +9,9 @@ export const Nav = styled.nav`
   top: 0;
   z-index: 999;
   height: 80px;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5); */
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  background-color: rgb(0, 0, 0);
+  /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.835); */
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.119);
   display: flex;
   justify-content: center;
   align-items: center;

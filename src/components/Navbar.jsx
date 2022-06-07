@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { IconContext } from "react-icons";
 import { BiMenu, BiX } from "react-icons/bi";
-import { Button } from "../GlobalStyles";
 import {
   Nav,
   NavbarContainer,
@@ -13,14 +11,11 @@ import {
   Menu,
   MenuItem,
   MenuLink,
-  MenuItemBtn,
-  MenuLinkBtn,
 } from "./Navbar.styles";
 import Logo from "../assets/logo.png";
 
 function Navbar() {
   const { isLoggedIn, user, logoutUser } = useContext(AuthContext);
-  const [button, setButton] = useState(true);
 
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
@@ -72,7 +67,7 @@ function Navbar() {
                     </MenuLink>
                   </MenuItem>
                   <MenuItem>
-                    <MenuLink onClick={logoutUser} to={logoutUser}>
+                    <MenuLink onClick={logoutUser} to={`/`}>
                       Logout
                     </MenuLink>
                   </MenuItem>
