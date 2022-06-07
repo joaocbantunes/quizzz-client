@@ -9,10 +9,12 @@ import IsPrivate from "./components/IsPrivate";
 import EditProfilePage from "./pages/EditProfile";
 import CreateQuiz from "./pages/CreateQuiz";
 import ShowQuiz from "./pages/ShowQuiz";
+import GlobalStyles from "./GlobalStyles";
 
 function App() {
   return (
     <div className="App">
+      <GlobalStyles />
       <Navbar />
       <Routes>
         <Route
@@ -39,7 +41,7 @@ function App() {
             </IsPrivate>
           }
         />
-                <Route
+        <Route
           path="/quiz/:id"
           element={
             <IsPrivate>

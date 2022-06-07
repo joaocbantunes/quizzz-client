@@ -6,9 +6,14 @@ import { AuthContext } from "../context/auth.context";
 
 function ShowQuiz() {
   const { id } = useParams();
-  const [quiz, setQuiz] = useState(null);
+  const [quiz, setQuiz] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [className, setClassName] = useState("answer");
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+
+  const navigate = useNavigate();
 
   const getQuiz = async () => {
     try {
@@ -22,8 +27,8 @@ function ShowQuiz() {
           },
         }
       );
-      setQuiz(response.data);
-      console.log(response.data);
+      setQuiz(response.data.questions);
+      //console.log(response.data.questions[0].answers[0].answer);
     } catch (error) {
       console.log(error);
     }
@@ -33,41 +38,74 @@ function ShowQuiz() {
     getQuiz();
   }, []);
 
-  const delay = (duration, callback) => {
+  /* const delay = (duration, callback) => {
     setTimeout(() => {
       callback();
     }, duration);
+  }; */
+
+  const handleAnswerOptionClick = (isCorrect) => {
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < quiz.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
   };
 
-  const handleClick = (a) => {
+  /* const handleClick = (a) => {
     setSelectedAnswer(a);
     setClassName("Answer choosen");
-    delay(5000, () => setClassName(a.true ? "correct answer" : "wrong answer"));
 
-    delay(10000, () => {
-      if (a.true) {
-        setQuestionNumber((prev) => prev + 1);
-        setSelectedAnswer(null);
-      } else {
-        wrongAnswer();
-        setStop(true);
-      }
-    });
-  };
+    if (a == "true") {
+      setScore(score + 1);
+      setSelectedAnswer(null);
+    } else {
+      setScore(score - 1);
+    }
+  }; */
+
+  /* const handleScore = () => {
+    setQuiz(null);
+  }; */
 
   return (
     <>
-      {quiz &&
-        quiz.questions.map((item) => {
-          return (
-            <form key={item._id} className="itemCard card">
-              <h3>{item.question}</h3>
-              {item.answers.map((a) => {
-                return <button onClick={() => handleClick(a)}>{a.text}</button>;
-              })}
-            </form>
-          );
-        })}
+      {quiz.length > 0 && (
+        <div className="">
+          {showScore ? (
+            <div className="score-section">
+              <h3>
+                You answered correctly {score} out of {quiz.length} questions!
+              </h3>
+            </div>
+          ) : (
+            <>
+              <div className="question-section">
+                <div className="question-text">
+                  <h3> {quiz[currentQuestion].question}</h3>
+                </div>
+              </div>
+              <div className="answer-section">
+                {quiz[currentQuestion].answers.map((answerOption) => (
+                  <button
+                    onClick={() =>
+                      handleAnswerOptionClick(answerOption.isCorrect)
+                    }
+                  >
+                    {answerOption.answer}
+                  </button>
+                ))}
+                <p>Progress: {currentQuestion} / 10</p>
+              </div>
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 }

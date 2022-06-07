@@ -60,8 +60,8 @@ function EditProfilePage() {
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
-  const uploadHandler = (e) => setImage(e.target.value);
-
+  /*   const uploadHandler = (e) => setImage(e.target.value);
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -92,9 +92,9 @@ function EditProfilePage() {
         <label htmlFor="description">Change Email</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
         <br />
-        <img src={image} alt="" srcset="" />
+        {/*         <img src={image} alt="" srcset="" />
         <input type="file" onChange={uploadHandler} />
-        <br />
+        <br /> */}
         <button type="submit">Edit</button>
       </form>
       <br />
