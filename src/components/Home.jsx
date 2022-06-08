@@ -1,15 +1,13 @@
 import Navbar from "./Navbar";
 import Feats from "./Feats";
-import { Button } from "../GlobalStyles";
+import Footer from "./Footer";
 import {
   HeroContainer,
   HeroContent,
   HeroContentText,
   HeroTitle,
   HeroTitleText,
-  HeroSubTitle,
   HeroText,
-  HeroBtn,
 } from "./Home.styles";
 
 const Home = () => {
@@ -19,23 +17,22 @@ const Home = () => {
         <HeroContent>
           <HeroContentText>
             <HeroTitle>
-              <HeroTitleText>Quizzz</HeroTitleText>
-              <HeroTitleText>Here you can prepare your future!</HeroTitleText>
+              <HeroTitleText>Welcome to Quizzz!</HeroTitleText>
             </HeroTitle>
-            <HeroSubTitle>...</HeroSubTitle>
             <HeroText>
               You can try different levels of Quizzz to prepare you for a tech
               interview.
             </HeroText>
-            <HeroBtn to="/order-now">
+            {/* <HeroBtn to="/order-now">
               <Button primary big bigFont bigRadius>
                 Start a Quizzz
               </Button>
-            </HeroBtn>
+            </HeroBtn> */}
           </HeroContentText>
         </HeroContent>
       </HeroContainer>
       <Feats />
+      <Footer />
     </div>
   );
 };

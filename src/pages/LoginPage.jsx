@@ -15,11 +15,22 @@ const jump = keyframes`
   }
 `;
 
+const Container = styled.section`
+  background-color: #000000;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  //height: 100vh;
+  @media only screen and (max-width: 1600px) {
+    height: 100vh;
+  }
+`;
+
 const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  //height: 100%;
   width: 100%;
 `;
 
@@ -74,10 +85,18 @@ const Button = styled.button`
 
 const Title = styled.h2`
   font-weight: normal;
-  margin-top: 10px;
-  color: #2a2a29;
+  margin-top: 0px;
+  color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
+`;
+
+const Label = styled.label`
+  color: #ffffff;
+`;
+
+const P = styled.p`
+  color: #ffffff;
 `;
 
 function LoginPage() {
@@ -112,31 +131,31 @@ function LoginPage() {
   return (
     <>
       <div className="LoginPage">
-        <Title>Login</Title>
-        <Wrapper>
-          <Form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <Input
-              type="text"
-              name="username"
-              value={username}
-              onChange={handleUsername}
-            />
-
-            <label htmlFor="password">Password</label>
-            <Input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handlePassword}
-            />
-
-            <Button type="submit">Login</Button>
-          </Form>
-        </Wrapper>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <p>Don't have an account?</p>
-        <Link to="/signup"> Sign up</Link>
+        <Container>
+          <Title>Login</Title>
+          <Wrapper>
+            <Form onSubmit={handleSubmit}>
+              <Label htmlFor="username">Username</Label>
+              <Input
+                type="text"
+                name="username"
+                value={username}
+                onChange={handleUsername}
+              />
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+              />
+              <Button type="submit">Login</Button>
+            </Form>
+          </Wrapper>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <P>Don't have an account?</P>
+          <Link to="/signup"> Sign up</Link>
+        </Container>
       </div>
     </>
   );

@@ -1,6 +1,100 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
+
+const jump = keyframes`
+  from{
+    transform: translateY(0)
+  }
+  to{
+    transform: translateY(-3px)
+  }
+`;
+
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //height: 100%;
+  width: 100%;
+`;
+
+const Container = styled.section`
+  background-color: #000000;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  //height: 100vh;
+  @media only screen and (max-width: 1600px) {
+    height: 100vh;
+  }
+`;
+
+const Form = styled.form`
+  border-style: solid;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 414px;
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
+const Input = styled.input`
+  max-width: 100%;
+  padding: 11px 13px;
+  background: #f9f9fa;
+  color: #e38b06;
+  margin-bottom: 0.9rem;
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid rgba(245, 245, 245, 0.7);
+  font-size: 14px;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
+  :focus,
+  :hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const Button = styled.button`
+  max-width: 100%;
+  padding: 11px 13px;
+  color: rgb(253, 249, 243);
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #e38b06;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  :hover {
+    background: #865000;
+    animation: ${jump} 0.2s ease-out forwards;
+  }
+`;
+
+const Title = styled.h2`
+  font-weight: normal;
+  margin-top: 0px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+`;
+
+const Label = styled.label`
+  color: #ffffff;
+`;
+
+const P = styled.p`
+  color: #ffffff;
+`;
 
 function Signuppage() {
   const [password, setPassword] = useState("");
@@ -31,34 +125,41 @@ function Signuppage() {
 
   return (
     <div className="SignupPage">
-      <h1>Sign Up</h1>
+      <Container>
+        <Title>Sign Up</Title>
+        <Wrapper>
+          <Form onSubmit={handleSubmit}>
+            <Label htmlFor="username">Username</Label>
+            <Input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleUsername}
+            />
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name</label>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleUsername}
-        />
+            <Label htmlFor="password">Password</Label>
+            <Input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePassword}
+            />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+            <Label htmlFor="email">E-mail</Label>
+            <Input
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleEmail}
+            />
 
-        <label htmlFor="email">E-mail</label>
-        <input type="text" name="email" value={email} onChange={handleEmail} />
-
-        <button type="submit">Sign Up</button>
-      </form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Already have an account?</p>
-      <Link to="/login"> Login</Link>
+            <Button type="submit">Sign Up</Button>
+          </Form>
+        </Wrapper>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <P>Already have an account?</P>
+        <Link to="/login"> Login</Link>
+      </Container>
     </div>
   );
 }

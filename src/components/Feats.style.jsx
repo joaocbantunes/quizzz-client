@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import { BiCheck, BiDetail, BiDish } from "react-icons/bi";
+import { BiCheck, BiDetail, BiAtom } from "react-icons/bi";
 import { Container } from "../GlobalStyles";
 
 export const WorksContent = styled.section`
+  background-color: #212121;
+  //opacity: 0.94;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
+  //margin-top: 1rem;
 `;
 export const WorksContainer = styled(Container)`
   display: flex;
@@ -15,7 +17,7 @@ export const WorksContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
   padding: 5rem 8rem;
-  color: #333333;
+  color: #fff;
   ${Container};
 `;
 
@@ -28,7 +30,7 @@ export const WorksCardContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
   @media only screen and (max-width: 900px) {
     flex-direction: column;
   }
@@ -41,7 +43,7 @@ export const WorksCard = styled.div`
   text-align: center;
   width: 30rem;
   height: 30rem;
-  background-color: #fff;
+  background-color: #b0abab;
   box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   transition: all 0.5s ease;
@@ -98,7 +100,7 @@ export const WorksIcon2 = styled(BiDetail)`
   color: #333;
   font-size: 6rem;
 `;
-export const WorksIcon3 = styled(BiDish)`
+export const WorksIcon3 = styled(BiAtom)`
   color: #333;
   font-size: 6rem;
 `;

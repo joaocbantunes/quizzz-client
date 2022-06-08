@@ -67,6 +67,11 @@ function Navbar() {
                     </MenuLink>
                   </MenuItem>
                   <MenuItem>
+                    <MenuLink onClick={closeMenu} to={`/createquestion/`}>
+                      Create Question
+                    </MenuLink>
+                  </MenuItem>
+                  <MenuItem>
                     <MenuLink onClick={logoutUser} to={`/`}>
                       Logout
                     </MenuLink>

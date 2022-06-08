@@ -11,11 +11,14 @@ import CreateQuiz from "./pages/CreateQuiz";
 import ShowQuiz from "./pages/ShowQuiz";
 import GlobalStyles from "./GlobalStyles";
 import Home from "./components/Home";
+import CreateQuestion from "./pages/CreateQuestion";
+import Particles from "./components/Particles";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
+      <Particles />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -40,6 +43,14 @@ function App() {
           element={
             <IsPrivate>
               <CreateQuiz />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/createquestion/"
+          element={
+            <IsPrivate>
+              <CreateQuestion />
             </IsPrivate>
           }
         />

@@ -2,7 +2,84 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
+import Footer from "../components/Footer";
+
+const jump = keyframes`
+  from{
+    transform: translateY(0)
+  }
+  to{
+    transform: translateY(-3px)
+  }
+`;
+
+const Container = styled.section`
+  background-color: #000000;
+  //background-position: center;
+  //background-repeat: no-repeat;
+  //background-size: cover;
+  //height: 100vh;
+  @media only screen and (max-width: 1600px) {
+    height: 80vh;
+  }
+`;
+
+const Button = styled.button`
+  max-width: 100%;
+  padding: 11px 13px;
+  color: rgb(253, 249, 243);
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #e38b06;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  :hover {
+    background: #865000;
+    animation: ${jump} 0.2s ease-out forwards;
+  }
+`;
+
+const Form = styled.form`
+  border-style: solid;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 904px;
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
+const Table = styled.table`
+  border-style: solid;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 904px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+`;
+
+const Title = styled.h2`
+  font-weight: normal;
+  margin-top: 0px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+`;
+
+const P = styled.p`
+  margin-top: 10px;
+  color: #ffffff;
+`;
 
 function ShowQuiz() {
   const { id } = useParams();
@@ -28,7 +105,6 @@ function ShowQuiz() {
         }
       );
       setQuiz(response.data.questions);
-      //console.log(response.data.questions[0].answers[0].answer);
     } catch (error) {
       console.log(error);
     }
@@ -37,12 +113,6 @@ function ShowQuiz() {
   useEffect(() => {
     getQuiz();
   }, []);
-
-  /* const delay = (duration, callback) => {
-    setTimeout(() => {
-      callback();
-    }, duration);
-  }; */
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
@@ -57,53 +127,49 @@ function ShowQuiz() {
     }
   };
 
-  /* const handleClick = (a) => {
-    setSelectedAnswer(a);
-    setClassName("Answer choosen");
-
-    if (a == "true") {
-      setScore(score + 1);
-      setSelectedAnswer(null);
-    } else {
-      setScore(score - 1);
-    }
-  }; */
-
-  /* const handleScore = () => {
-    setQuiz(null);
-  }; */
-
   return (
     <>
       {quiz.length > 0 && (
         <div className="">
-          {showScore ? (
-            <div className="score-section">
-              <h3>
-                You answered correctly {score} out of {quiz.length} questions!
-              </h3>
-            </div>
-          ) : (
-            <>
-              <div className="question-section">
-                <div className="question-text">
-                  <h3> {quiz[currentQuestion].question}</h3>
-                </div>
+          <Container>
+            {showScore ? (
+              <div className="score-section">
+                <Title>
+                  You answered correctly {score} out of 10 questions!
+                </Title>
               </div>
-              <div className="answer-section">
-                {quiz[currentQuestion].answers.map((answerOption) => (
-                  <button
-                    onClick={() =>
-                      handleAnswerOptionClick(answerOption.isCorrect)
-                    }
-                  >
-                    {answerOption.answer}
-                  </button>
-                ))}
-                <p>Progress: {currentQuestion} / 10</p>
-              </div>
-            </>
-          )}
+            ) : (
+              <>
+                <Form>
+                  <div className="question-section">
+                    <div className="question-text">
+                      <Title>
+                        <strong>Question:</strong>
+                      </Title>
+                      <Title> {quiz[currentQuestion].question}</Title>
+                    </div>
+                  </div>
+                </Form>
+                <Table>
+                  <div className="answer-section">
+                    <Title>Answer:</Title>
+                    {quiz[currentQuestion].answers.map((answerOption) => (
+                      <Button
+                        onClick={() =>
+                          handleAnswerOptionClick(answerOption.isCorrect)
+                        }
+                      >
+                        {answerOption.answer}
+                      </Button>
+                    ))}
+
+                    <P>Progress: {currentQuestion} / 10</P>
+                  </div>
+                </Table>
+              </>
+            )}
+          </Container>
+          <Footer />
         </div>
       )}
     </>
