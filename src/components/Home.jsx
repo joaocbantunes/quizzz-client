@@ -20,8 +20,7 @@ const Home = () => {
               <HeroTitleText>Welcome to Quizzz!</HeroTitleText>
             </HeroTitle>
             <HeroText>
-              You can try different levels of Quizzz to prepare you for a tech
-              interview.
+              You can use Quizzz to prepare you for a tech interview.
             </HeroText>
             {/* <HeroBtn to="/order-now">
               <Button primary big bigFont bigRadius>

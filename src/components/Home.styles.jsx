@@ -59,6 +59,8 @@ export const HeroTitle = styled.h1`
 
 export const HeroTitleText = styled.span`
   display: block;
+  color: #e38b06;
+  text-shadow: 3px 3px #ffffff75;
 `;
 
 export const HeroSubTitle = styled.h2`
@@ -69,9 +71,9 @@ export const HeroSubTitle = styled.h2`
 `;
 
 export const HeroText = styled.h3`
-  font-size: clamp(2rem, 2.5vw, 3rem);
-  font-weight: 400;
-  padding: 2.5rem 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 3px 3px #e38b06;
   @media only screen and (max-width: 375px) {
     padding: 1.5rem 0;
   }

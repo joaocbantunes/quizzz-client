@@ -118,9 +118,17 @@ function CreateQuiz() {
 
   const navigate = useNavigate();
 
-  const routeChange = () => {
-    let path = `/quiz/629a23583b63283836c3dfe3`;
+  const easyQuiz = () => {
+    let path = `/quiz-easy`;
     navigate(path);
+  };
+
+  const hardQuiz = () => {
+    navigate(`/quiz-hard`);
+  };
+
+  const mediumQuiz = () => {
+    navigate(`/quiz-medium`);
   };
   /*   const easyQuizzz = async () => {
     try {
@@ -151,21 +159,21 @@ function CreateQuiz() {
         <div className="EasyButton">
           <Wrapper>
             <Form>
-              <EasyButton
-                onClick={routeChange}
-                type="button"
-                className="easybtn"
-              >
+              <EasyButton onClick={easyQuiz} type="button" className="easybtn">
                 Easy Quizz
               </EasyButton>
               <br />
               <br />
-              <MediumButton type="button" className="mediumbtn">
+              <MediumButton
+                type="button"
+                className="mediumbtn"
+                onClick={mediumQuiz}
+              >
                 Medium Quizz
               </MediumButton>
               <br />
               <br />
-              <HardButton type="button" className="hardbtn">
+              <HardButton type="button" className="hardbtn" onClick={hardQuiz} >
                 Hard Quizz
               </HardButton>
             </Form>

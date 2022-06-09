@@ -66,11 +66,11 @@ function Navbar() {
                       Start a Quizzz
                     </MenuLink>
                   </MenuItem>
-                  <MenuItem>
+                  {/* <MenuItem>
                     <MenuLink onClick={closeMenu} to={`/createquestion/`}>
                       Create Question
                     </MenuLink>
-                  </MenuItem>
+                  </MenuItem> */}
                   <MenuItem>
                     <MenuLink onClick={logoutUser} to={`/`}>
                       Logout

@@ -13,6 +13,8 @@ import GlobalStyles from "./GlobalStyles";
 import Home from "./components/Home";
 import CreateQuestion from "./pages/CreateQuestion";
 import Particles from "./components/Particles";
+import MediumQuiz from "./pages/MediumQuiz";
+import HardQuiz from "./pages/HardQuiz";
 
 function App() {
   return (
@@ -22,6 +24,32 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/quiz-easy"
+          element={
+            <IsPrivate>
+              <ShowQuiz />
+            </IsPrivate>
+          }
+        >
+          {" "}
+        </Route>
+        <Route
+          path="/quiz-medium"
+          element={
+            <IsPrivate>
+              <MediumQuiz />
+            </IsPrivate>
+          }
+        ></Route>
+        <Route
+          path="/quiz-hard"
+          element={
+            <IsPrivate>
+              <HardQuiz />
+            </IsPrivate>
+          }
+        ></Route>
         <Route
           path="/userprofile"
           element={

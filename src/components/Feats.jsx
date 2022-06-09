@@ -26,17 +26,17 @@ function Feats() {
               </WorksIconContainer>
               <WorksCardTitle>Pick a level</WorksCardTitle>
               <WorksCardText>
-                There are different leves to choose from. This gives you a
-                variety of questions to train.
+                There are a number of different levels. That gives you a variety
+                of questions to train.
               </WorksCardText>
             </WorksCard>
             <WorksCard>
               <WorksIconContainer>
                 <WorksIcon2 />
               </WorksIconContainer>
-              <WorksCardTitle>Customize it</WorksCardTitle>
+              <WorksCardTitle>Random questions</WorksCardTitle>
               <WorksCardText>
-                You can add your own questions to the database.
+                Every Quizzz has 10 random questions.
               </WorksCardText>
             </WorksCard>
             <WorksCard>
@@ -45,8 +45,8 @@ function Feats() {
               </WorksIconContainer>
               <WorksCardTitle>Train it!</WorksCardTitle>
               <WorksCardText>
-                It's time to train you for the tech interview that can change
-                your life.
+                It's time to train for the tech interview that can change your
+                life.
               </WorksCardText>
             </WorksCard>
           </WorksCardContent>

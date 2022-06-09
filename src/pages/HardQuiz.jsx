@@ -99,7 +99,7 @@ function ShowQuiz() {
   const getQuiz = async () => {
     try {
       let response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/quiz-easy`,
+        `${process.env.REACT_APP_API_URL}/api/quiz-hard`,
         {},
         {
           headers: {
@@ -158,7 +158,6 @@ function ShowQuiz() {
                 <Table>
                   <div className="answer-section">
                     <Title>Answer:</Title>
-
                     {quiz[currentQuestion].answers.map((answerOption) => (
                       <Button
                         onClick={() =>
